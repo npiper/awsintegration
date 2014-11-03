@@ -2,20 +2,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>au.com.solveapuzzle</groupId>
-  <artifactId>awsintegration</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>awsintegration</name>
+  <name>contract</name>
+  <artifactId>build</artifactId>
   <modules>
-    <module>build</module>
-    <module>service</module>
-    <module>contract</module>
+    <module>build.base</module>
   </modules>
-  
-  <distributionManagement>
-    <site>
-      <id>website</id>
-      <url>scp://www.mycompany.com/www/docs/project/</url>
-    </site>
-  </distributionManagement>
 </project>

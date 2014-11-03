@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!--
+		This pom.xml is used to auto-generate the POJOs from the xsd. This pom
+		has only one goal: generate-sources.
+	-->
+
+	<modelVersion>4.0.0</modelVersion>
+	<name>entitymodel</name>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+	<groupId>au.com.solveapuzzle</groupId>
+	<artifactId>entitymodel</artifactId>
+
+	<parent>
+		<groupId>au.com.solveapuzzle</groupId>
+		<artifactId>build.base</artifactId>
+		<relativePath>../../build/build.base</relativePath>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+<dependency>
+	<groupId>com.sun.xml.bind</groupId>
+	<artifactId>jaxb-impl</artifactId>
+	<version>2.2.11</version>
+	<scope>provided</scope>
+</dependency>
+		<dependency>
+			<groupId>au.com.solveapuzzle</groupId>
+			<artifactId>model.resources</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				 <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.11.0</version>
+				<configuration>
+					<extension>true</extension>
+					<generateDirectory>src/main/java</generateDirectory>
+					<removeOldOutput>false</removeOldOutput>
+					<forceRegenerate>true</forceRegenerate>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>person</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<generatePackage>model.person</generatePackage>
+							<schemaIncludes>
+								<include>person/*.xsd</include>
+							</schemaIncludes>
+							<schemaDirectory>src/main/resources/xsd</schemaDirectory>
+							<bindingDirectory>src/main/resources/binding</bindingDirectory>
+							<bindingIncludes>
+								<include>datetime.xjb</include>
+							</bindingIncludes>
+						</configuration>
+					</execution>
+					
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0</version>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/resources</outputDirectory>
+							<artifactItems>
+								<artifactItem>
+									<groupId>au.com.solveapuzzle</groupId>
+									<artifactId>model.resources</artifactId>
+									<version>LATEST</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<excludes>**/*.sql,**/*.SQL,**/*.Sql,**/*.xml,**/*.properties,**/*.MF</excludes>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/resources/xsd</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+												<fileset>
+							<directory>src/main/resources/META-INF</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						
+                        <fileset>
+							<directory>src/main/java</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
