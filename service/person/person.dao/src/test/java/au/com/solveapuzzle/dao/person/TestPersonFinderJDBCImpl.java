@@ -4,6 +4,8 @@ import model.person.ObjectFactory;
 import model.person.PersonRequestType;
 import model.person.PersonResponseType;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,12 @@ public class TestPersonFinderJDBCImpl {
 
 	@Autowired
     protected PersonFinderJDBCImpl unitUnderTest;
+	
+	@Before
+	public void setUp()
+	{
+		this.unitUnderTest.jdbcTemplate.execute("CREATE TABLE PERSON (FIRSTNAME VARCHAR(200) NOT NULL, LASTNAME VARCHAR(200) NOT NULL)");
+	}
 	
 	@Test
     public void testQuery()
@@ -31,5 +39,12 @@ public class TestPersonFinderJDBCImpl {
     	
     	
     }
+	
+	@After
+	public void tearDown(){
+		
+		this.unitUnderTest.jdbcTemplate.execute("DROP TABLE PERSON");
+	}
+	
 	
 }

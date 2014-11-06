@@ -21,12 +21,12 @@ import au.com.solveapuzzle.service.person.PersonService;
 @Repository
 public class PersonFinderJDBCImpl implements PersonService {
 
-	private JdbcTemplate jdbcTemplate;
+	protected JdbcTemplate jdbcTemplate;
 	
 	public PersonResponseType findPerson(PersonRequestType request) {
 		// TODO Auto-generated method stub
 		
-		jdbcTemplate.query("SELECT * FROM PERSON WHERE FIRSTNAME = " + request.getFirstName() + " AND LASTNAME = " + request.getSurname(), new PersonResultExtractor());
+		jdbcTemplate.query("SELECT * FROM PERSON WHERE FIRSTNAME = '" + request.getFirstName() + "' AND LASTNAME = '" + request.getSurname() + "';", new PersonResultExtractor());
 		return null;
 	}
 	

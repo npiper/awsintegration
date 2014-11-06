@@ -11,6 +11,7 @@
 
   <modules>
     <module>person.api</module>
+    <module>person.dao</module>
     <module>person.impl</module>
     <!-- <module>person.client</module>  -->
   </modules>
