@@ -14,6 +14,7 @@
 		<groupId>au.com.solveapuzzle</groupId>
 		<artifactId>build.base</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../../build/build.base</relativePath>
 	</parent>
 
 	<dependencies>
