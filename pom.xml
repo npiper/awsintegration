@@ -8,8 +8,8 @@
   <name>awsintegration</name>
   <modules>
     <module>build</module>
-    <module>service</module>
     <module>contract</module>
+    <module>service</module>
   </modules>
   
   <distributionManagement>
