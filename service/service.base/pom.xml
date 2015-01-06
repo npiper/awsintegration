@@ -1,12 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>au.com.solveapuzzle</groupId>
 	<artifactId>service.base</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>service.base</name>
 	<description>Service base POM	</description>
 
+	<packaging>pom</packaging>
 	<parent>
 		<groupId>au.com.solveapuzzle</groupId>
 		<artifactId>build.base</artifactId>
@@ -23,7 +22,53 @@
 			<version>1.8.0.10</version>
 		</dependency>
 
+		<!-- Spring example - http://spring.io/guides/gs/producing-web-service/ -->
+
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter</artifactId>
+  <version>1.1.10.RELEASE</version>
+</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-ws</artifactId>
+			<version>1.1.10.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		
+		<dependency>
+	<groupId>org.springframework.ws</groupId>
+	<artifactId>spring-ws-core</artifactId>
+	<version>2.2.0.RELEASE</version>
+</dependency>
+
 
 	</dependencies>
 
+
+	<build>
+
+		<plugins>
+
+			<plugin>
+
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.1.10.RELEASE</version>
+			</plugin>
+
+		</plugins>
+
+	</build>
 </project>

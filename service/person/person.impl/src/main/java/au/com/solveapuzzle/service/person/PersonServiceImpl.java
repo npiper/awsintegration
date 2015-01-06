@@ -3,13 +3,27 @@ package au.com.solveapuzzle.service.person;
 import model.person.PersonRequestType;
 import model.person.PersonResponseType;
 
-public class PersonServiceImpl implements PersonService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ws.server.endpoint.annotation.Endpoint;
+import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-	public PersonService internalFinder;
+@Endpoint
+public class PersonServiceImpl {
+
+	private static final String NAMESPACE_URI = "http://www.example.org/PersonService/v1";
+
+	@Autowired
+	public PersonService internalPersonFinder;
 	
-	public PersonResponseType findPerson(PersonRequestType request) {
-		// TODO Auto-generated method stub
-		return null;
+
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "findPerson")
+	@ResponsePayload
+	public PersonResponseType findPerson(@RequestPayload PersonRequestType request) {
+		
+		return internalPersonFinder.findPerson(request);
 	}
 
 }

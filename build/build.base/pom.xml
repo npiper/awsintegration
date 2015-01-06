@@ -5,25 +5,28 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>build.base</name>
+
   <description>Build base for establishing rules, test API's, dependencies, code metrics.</description>
+
+
 <dependencies>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
-        <version>4.1.1.RELEASE</version>
+        <version>4.0.8.RELEASE</version>
     </dependency>
     
     <!-- Consider moving this from the Service layer to a binding layer-->
     <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-jdbc</artifactId>
-	<version>4.1.1.RELEASE</version>
+	<version>4.0.8.RELEASE</version>
 </dependency>
 
     <dependency>
  	 <groupId>org.springframework</groupId>
 	 <artifactId>spring-messaging</artifactId>
-	 <version>4.1.1.RELEASE</version>
+	 <version>4.0.8.RELEASE</version>
     </dependency>
     
     
@@ -38,7 +41,7 @@
      <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
-        <version>4.1.1.RELEASE</version>
+        <version>4.0.8.RELEASE</version>
         <scope>test</scope>
     </dependency>
     
