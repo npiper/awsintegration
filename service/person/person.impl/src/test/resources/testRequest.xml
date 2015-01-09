@@ -1,9 +1,15 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-				  xmlns:gs="http://spring.io/guides/gs-producing-web-service">
-   <soapenv:Header/>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+
+xmlns:v1="http://www.example.org/PersonService/v1">
+<!-- URL = http://localhost:8080/ws -->
+ <soapenv:Header/>
+
    <soapenv:Body>
-      <gs:getCountryRequest>
-         <gs:name>Spain</gs:name>
-      </gs:getCountryRequest>
+
+     <v1:findPerson>
+        <v1:firstName>Bob</v1:firstName>
+        <v1:surname>Hoskins</v1:surname>
+     </v1:findPerson>
    </soapenv:Body>
+
 </soapenv:Envelope>
