@@ -1,7 +1,44 @@
-<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:annox="http://annox.dev.java.net"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_1.xsd"
+  jaxb:extensionBindingPrefixes="xjc annox"
+  version="2.1">
+    
+    <!-- 
     <jaxb:globalBindings>
         <jaxb:serializable uid="7438632938657"/>
     </jaxb:globalBindings>
+     -->
+    <!--  XML Root Elements -->
+    
+    <!--  Reference Article
+    https://jbossadventure.wordpress.com/2013/04/16/spring-ws-no-adapter-for-endpoint/
+    
+    http://codereview.stackexchange.com/questions/1877/jaxb-xjc-code-generation-adding-xmlrootelement-and-joda-datetime
+     -->
+    
+  <!-- org.example.SomeRootType @XmlRootElement -->
+  <jaxb:bindings schemaLocation="../../xsd/person/Person.xsd" node="/xs:schema">
+    <!--  REQUEST TYPE -->
+    <jaxb:bindings node="xs:complexType[@name='PersonRequestType']">
+      
+      <annox:annotate>
+        <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="findPerson"/>
+      </annox:annotate>
+    </jaxb:bindings>
+    
+    <!--  RESPONSE TYPE -->
+        <jaxb:bindings node="xs:complexType[@name='PersonResponseType']">
+      
+      <annox:annotate>
+        <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="PersonResponseType"/>
+      </annox:annotate>
+    </jaxb:bindings>
+    
+  </jaxb:bindings>
+    
 </jaxb:bindings>

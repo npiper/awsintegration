@@ -21,7 +21,7 @@ public class TestPersonFinderJDBCImpl {
 	@Before
 	public void setUp()
 	{
-		this.unitUnderTest.jdbcTemplate.execute("CREATE TABLE PERSON (FIRSTNAME VARCHAR(200) NOT NULL, LASTNAME VARCHAR(200) NOT NULL)");
+		//this.unitUnderTest.jdbcTemplate.execute("CREATE TABLE PERSON (FIRSTNAME VARCHAR(200) NOT NULL, LASTNAME VARCHAR(200) NOT NULL)");
 	}
 	
 	@Test
@@ -43,7 +43,7 @@ public class TestPersonFinderJDBCImpl {
 	@After
 	public void tearDown(){
 		
-		this.unitUnderTest.jdbcTemplate.execute("DROP TABLE PERSON");
+		//this.unitUnderTest.jdbcTemplate.execute("DROP TABLE PERSON");
 	}
 	
 	

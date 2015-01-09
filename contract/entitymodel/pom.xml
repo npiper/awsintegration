@@ -63,7 +63,27 @@
 							<bindingDirectory>src/main/resources/binding</bindingDirectory>
 							<bindingIncludes>
 								<include>datetime.xjb</include>
+								<include>person/person.xjb</include>
 							</bindingIncludes>
+							
+							<!--  Add XJC Annotations to generate XMLRootTypes -->
+							<!--  SEE: http://codereview.stackexchange.com/questions/1877/jaxb-xjc-code-generation-adding-xmlrootelement-and-joda-datetime/77076#77076 -->
+							
+							<args>
+                <arg>-Xannotate</arg>
+               </args>                  
+               <plugins>
+                <plugin>
+                  <groupId>org.jvnet.jaxb2_commons</groupId>
+                  <artifactId>jaxb2-basics</artifactId>
+                  <version>0.6.0</version>
+                </plugin>
+                <plugin>
+                  <groupId>org.jvnet.jaxb2_commons</groupId>
+                  <artifactId>jaxb2-basics-annotate</artifactId>
+                  <version>0.6.0</version>
+                </plugin>
+              </plugins>
 						</configuration>
 					</execution>
 					

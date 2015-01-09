@@ -31,6 +31,8 @@ public class PersonServiceConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://www.example.org/PersonService/v1");
 		wsdl11Definition.setSchema(countriesSchema);
+	
+		
 		return wsdl11Definition;
 	}
 

@@ -26,13 +26,23 @@ public class PersonFinderJDBCImpl implements PersonService {
 	public PersonResponseType findPerson(PersonRequestType request) {
 		// TODO Auto-generated method stub
 		
-		jdbcTemplate.query("SELECT * FROM PERSON WHERE FIRSTNAME = '" + request.getFirstName() + "' AND LASTNAME = '" + request.getSurname() + "';", new PersonResultExtractor());
-		return null;
+		return jdbcTemplate.query("SELECT * FROM PERSON WHERE FIRSTNAME = '" + request.getFirstName() + "' AND LASTNAME = '" + request.getSurname() + "';", new PersonResultExtractor());
+	
 	}
 	
 	@Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        
+        //
+        String ddl0 = 
+                "DROP TABLE PERSON IF EXISTS;";
+        String ddl1 =
+                "CREATE TABLE PERSON(FIRSTNAME VARCHAR(128) NOT NULL,LASTNAME VARCHAR(128) NOT NULL)";
+        
+        this.jdbcTemplate.execute(ddl0);
+        this.jdbcTemplate.execute(ddl1);
+        
     }
 
 
@@ -50,7 +60,8 @@ public class PersonFinderJDBCImpl implements PersonService {
 			
 			
 			Person person = personObjFactory.createPerson();
-			
+			person.setFirstName("Test");
+			personResponse.getPerson().add(person);
 			
 			// TODO Auto-generated method stub
 			return personResponse;
